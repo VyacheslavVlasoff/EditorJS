@@ -1,0 +1,54 @@
+﻿#save-button {
+    padding: 5px;
+    margin: 5px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: greenyellow;
+}
+
+.ce-toolbar__plus, 
+.ce-toolbar__settings-btn {
+    background-color: white;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.simple-image {
+    padding: 20px 0;
+}
+
+.simple-image input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e4e4e4;
+    border-radius: 3px;
+    outline: none;
+    font-size: 14px;
+}
+
+.simple-image img {
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.simple-image input,
+.simple-image [contenteditable] {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.simple-image.withBorder img {
+    border: 1px solid #e8e8eb;
+}
+
+.simple-image.withBackground {
+    background: gray;
+    padding: 10px;
+}
+
+.simple-image.withBackground img ,
+.simple-image.stretched img {
+    display: block;
+    max-width: 60%;
+    margin: 0 auto 15px;
+}
