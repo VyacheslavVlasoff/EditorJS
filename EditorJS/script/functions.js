@@ -1,4 +1,6 @@
-﻿class MySimpleImage {
+﻿
+
+class MySimpleImage {
     static get toolbox() {
       return {
         title: 'ImageBG',
@@ -26,6 +28,7 @@
             withBorder: data.withBorder !== undefined ? data.withBorder : false,
             withBackground: data.withBackground !== undefined ? data.withBackground : false,
             stretched: data.stretched !== undefined ? data.stretched : false,
+            changeImage: data.changeImage !== undefined ? data.changeImage : false,
           };
         this.wrapper = undefined;
         this.settings = [
@@ -40,6 +43,10 @@
             {
               name: 'withBackground',
               icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.043 8.265l3.183-3.183h-2.924L4.75 10.636v2.923l4.15-4.15v2.351l-2.158 2.159H8.9v2.137H4.7c-1.215 0-2.2-.936-2.2-2.09v-8.93c0-1.154.985-2.09 2.2-2.09h10.663l.033-.033.034.034c1.178.04 2.12.96 2.12 2.089v3.23H15.3V5.359l-2.906 2.906h-2.35zM7.951 5.082H4.75v3.201l3.201-3.2zm5.099 7.078v3.04h4.15v-3.04h-4.15zm-1.1-2.137h6.35c.635 0 1.15.489 1.15 1.092v5.13c0 .603-.515 1.092-1.15 1.092h-6.35c-.635 0-1.15-.489-1.15-1.092v-5.13c0-.603.515-1.092 1.15-1.092z"/></svg>`
+            },
+            {
+              name: 'changeImage',
+              icon: 'Изменить'
             }
           ];
       }
@@ -92,7 +99,6 @@
 
       renderSettings(){
         const wrapper = document.createElement('div');
-    
         this.settings.forEach( tune => {
           let button = document.createElement('div');
     
@@ -106,7 +112,7 @@
             button.classList.toggle(this.api.styles.settingsButtonActive);
           });
         });
-    
+
         return wrapper;
       }
     
@@ -126,6 +132,11 @@
       
           if (tune.name === 'stretched') {
             this.api.blocks.stretchBlock(this.api.blocks.getCurrentBlockIndex(), !!this.data.stretched);
+          }
+
+          if (tune.name === 'changeImage') {
+            this.api.blocks.delete(this.api.blocks.getCurrentBlockIndex());
+            this.api.blocks.insert("image", {url: ""});
           }
         });
       }
@@ -155,28 +166,4 @@
         break;
         }
       }
-}
-
-class Header1 {
-  static get toolbox() {
-    return {
-      title: 'Header1',
-      icon: 'H1'
-    };
-  }
-
-  constructor({data}){
-    this.data = data;
-  }
-  
-  render() {
-    const wrapper = document.createElement('h1');
-    return wrapper;
-  }
-
-  save(blockContent) {
-    return {
-      text: blockContent.value
-    }
-  }
 }
