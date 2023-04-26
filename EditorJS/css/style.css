@@ -1,10 +1,15 @@
 ﻿#save-button {
     padding: 5px;
     margin: 5px;
+    align-items: end;
     background-color: aliceblue;
     border-radius: 5px;
     border-width: 1px;
     border-color: greenyellow;
+}
+
+#editorjs {
+    margin-top: 50px;
 }
 
 .ce-toolbar__plus, 

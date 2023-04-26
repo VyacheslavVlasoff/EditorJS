@@ -78,11 +78,32 @@
             });
 
             const elem = document.getElementById('editorjs');
+            elem.addEventListener('mouseover', function() {
+            editor.save().then(savedData => {
+            const elemChild = elem.querySelector(".ce-block:nth-child(1)");
+            const elemChild2 = elem.querySelector(".ce-block:nth-child(n+2)");
+            elemChild.addEventListener('mouseover', function() {
+                  var settings = elem.querySelector('.ce-toolbar')
+                        .querySelector('.ce-toolbar__content')
+                        .querySelector('.ce-toolbar__actions')
+                        .querySelector('.ce-toolbar__plus');
+                        settings.setAttribute("style", "display: none;");
+            });
+            elemChild2.addEventListener('mouseover', function() {
+                  var settings = elem.querySelector('.ce-toolbar')
+                        .querySelector('.ce-toolbar__content')
+                        .querySelector('.ce-toolbar__actions')
+                        .querySelector('.ce-toolbar__plus');
+                        settings.setAttribute("style", "display: block;");
+            });
+          });
+        });
+
             elem.addEventListener('click', () => {
                 editor.save().then(savedData => {
                     const elemH = elem.querySelector(".ce-block:nth-child(1)");
                     const elemI = elem.querySelector(".ce-block:nth-child(2)");
-                    const elemOther = elem.querySelector(".ce-block:nth-child(n+3)")
+                    const elemOther = elem.querySelector(".ce-block:nth-child(3)")
                     const elemSelected = elem.querySelector(".ce-block.ce-block--selected");
                     if (elemH === elemSelected || elemI === elemSelected) {
                         var settings = elem.querySelector('.ce-popover.ce-popover--opened')
